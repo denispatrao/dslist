@@ -3,6 +3,7 @@ package com.denispatrao.dslist.servicos;
 import com.denispatrao.dslist.dto.JogoDto;
 import com.denispatrao.dslist.dto.JogoMiniDto;
 import com.denispatrao.dslist.entidades.Jogo;
+import com.denispatrao.dslist.projetos.JogoMiniProjeto;
 import com.denispatrao.dslist.repositorio.JogoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,12 @@ public class JogoServico {
     @Transactional(readOnly = true)
     public List<JogoMiniDto> pegarTudo() {
         List<Jogo> resultado = jogoRepositorio.findAll();
+        return resultado.stream().map(x -> new JogoMiniDto(x)).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<JogoMiniDto> procurarPorLista(Long listaId) {
+        List<JogoMiniProjeto> resultado = jogoRepositorio.procurarPorLista(listaId);
         return resultado.stream().map(x -> new JogoMiniDto(x)).toList();
     }
 

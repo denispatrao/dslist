@@ -1,6 +1,7 @@
 package com.denispatrao.dslist.dto;
 
 import com.denispatrao.dslist.entidades.Jogo;
+import com.denispatrao.dslist.projetos.JogoMiniProjeto;
 
 public class JogoMiniDto {
 
@@ -22,6 +23,15 @@ public class JogoMiniDto {
         imgUrl = entidade.getImgUrl();
         descricaoCurta = entidade.getDescricaoCurta();
     }
+
+    public JogoMiniDto(JogoMiniProjeto projecao) {
+        id = projecao.getId();
+        titulo = projecao.getTitulo();
+        ano = projecao.getAno();
+        imgUrl = projecao.getImgUrl();
+        descricaoCurta = projecao.getDescricaoCurta();
+    }
+
 
     public Long getId() {
         return id;
